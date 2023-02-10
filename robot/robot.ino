@@ -1,6 +1,8 @@
 #include <Servo.h>
 char t;
 
+int num;
+
 // `::DEBUG` is read before execution of any method in `DEBUG` class
 // It will only execute if value is set to `true`
 const bool DEBUG = true;
@@ -126,6 +128,7 @@ void loop() {
 
   // If "t" is not a motion command then restart loop function
   if (isdigit(t)){return;}
+
   switch(t)
   {
     case 'F':    //move forward(all motors rotate in forward direction)
