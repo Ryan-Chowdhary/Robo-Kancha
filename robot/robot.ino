@@ -3,7 +3,7 @@
 // `t` is the variable the variable that stores the recived commands
 char t;
 
-// `::DEBUG` is read before execution of any method in `DEBUG` class
+// `::DEBUG` is read before execution of any method in `DEBUG` class.
 // It will only execute if value is set to `true`
 const bool DEBUG = true;
 
