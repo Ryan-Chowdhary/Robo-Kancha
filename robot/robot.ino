@@ -58,13 +58,13 @@ class MOTOR
       pinMode(RIGHT_REAR, OUTPUT);
     }
 
-    static void motor_control(int lf = LOW, int lr = LOW, int rf = LOW, int rr = LOW) {
-      /* Default value is set to low
-      If called without arguments it will stop all motors */
-      digitalWrite(LEFT_FRONT, lf);
-      digitalWrite(LEFT_REAR, lr);
-      digitalWrite(RIGHT_FRONT, rf);
-      digitalWrite(RIGHT_REAR, rr);
+    /* Used to control the motor output pins.
+    If called without arguments, it will set all pins to low */
+    static void motor_control(int left_front = LOW, int left_rear = LOW, int right_front = LOW, int right_rear = LOW) {
+      digitalWrite(LEFT_FRONT, left_front);
+      digitalWrite(LEFT_REAR, left_rear);
+      digitalWrite(RIGHT_FRONT, right_front);
+      digitalWrite(RIGHT_REAR, right_rear);
     }
 };
 
