@@ -85,6 +85,8 @@ class MOTOR
     }
 };
 
+// `SHOOTER` class stores the methods and variables neccassary 
+// to control the shooter mechanism
 class SHOOTER
 {
   protected:
@@ -93,6 +95,8 @@ class SHOOTER
   public:
     static Servo S1;
     static Servo S2;
+    // `LOADER` class stores the methods and variables neccessary
+    // to control the loader mechanism
     class LOADER {
       protected:
         static const int servo1 = 3; // first servo pin
@@ -104,10 +108,14 @@ class SHOOTER
           L1.attach(servo1);
           L2.attach(servo2);
         }
+        // `set` method is used to control the angle at
+        // which the loader mechanism servos should turn.
         static void set(float p) {
           L1.write(p);
           L2.write(p);
         }
+        // `load` method is used to load the balls by calling `set` with `90` degrees.
+        // the delay is set to `1 second`
         static void load() {
           set(90);
           delay(1000);
@@ -118,6 +126,7 @@ class SHOOTER
       S1.attach(SHOOTER1);
       S2.attach(SHOOTER2);
     }
+    // `shoot` method is used to make the shooting mechanism shoot the balls
     void shoot(float f);
 };
 
