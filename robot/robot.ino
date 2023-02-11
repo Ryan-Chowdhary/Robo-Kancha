@@ -1,14 +1,19 @@
 #include <Servo.h>
+
+// `t` is the variable the variable that stores the recived commands
 char t;
 
 // `::DEBUG` is read before execution of any method in `DEBUG` class
 // It will only execute if value is set to `true`
 const bool DEBUG = true;
 
+
 template <typename T_ty> struct TypeInfo {
   static const char * name;
 };
 template <typename T_ty> const char * TypeInfo<T_ty>::name = "unknown";
+// MACRO `TYPE_NAME` is used to obtain the object type of the object supplied.
+// To add support for more object types, use the `MAKE_TYPE_INFO` MACRO with the object type you want to add suppport for
 #define TYPE_NAME(var) TypeInfo< typeof(var) >::name
 #define MAKE_TYPE_INFO(type)  template <> const char * TypeInfo<type>::name = #type;
 MAKE_TYPE_INFO( int )
@@ -23,9 +28,14 @@ class MOTOR;
 class SHOOTER;
 class COMM;
 
+
+// `DEBUG` class is used for debugging purposes.
+// set the `::DEBUG` variable to true to enable the execution of its methods
 class DEBUG
 {
   public:
+    // The `DEBUG::print` method is used to print an unknown number of variables.
+    // Specify the number of variables to print as the first argument
     static void print(int argCount, ...) {
       if (!(::DEBUG)) {
         return ;
@@ -41,7 +51,10 @@ class DEBUG
     }
 };
 
-
+// The `MOTOR` class contains the methods and variables used to control the motors.
+// To begin, initialise a class instance inside the `setup` function, this will set the pins nessassary to control the motors as `OUTPUT`.
+// Advice, because the class members are mostly static, do not create a new instance other than the one inside `setup` but 
+// instead use the class name as the scope specifyer
 class MOTOR
 {
   protected:
@@ -104,10 +117,8 @@ class SHOOTER
     void shoot(float f);
 };
 
-Servo SHOOTER::S1;
-Servo SHOOTER::S2;
-Servo SHOOTER::LOADER::L1;
-Servo SHOOTER::LOADER::L2;
+// Initilisation of Servo objects
+Servo SHOOTER::S1, SHOOTER::S2, SHOOTER::LOADER::L1, SHOOTER::LOADER::L2;
 
 void setup() {
   MOTOR motor;
