@@ -1,9 +1,7 @@
 #include <Servo.h>
 char t;
 
-int num;
-
-// `::DEBUG` is read before execution of any method in `DEBUG` class
+// `::DEBUG` is read before execution of any method in `DEBUG` class.
 // It will only execute if value is set to `true`
 const bool DEBUG = true;
 
