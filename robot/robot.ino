@@ -1,3 +1,7 @@
+// REMINDER: classes `SHOOTER` and its respective member methods and classes 
+// have yet to be implemented
+// And class `COMM` is yet to be defined
+
 #include <Servo.h>
 
 // `t` is the variable the variable that stores the recived commands
