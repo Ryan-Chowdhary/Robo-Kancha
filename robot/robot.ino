@@ -127,6 +127,7 @@ void setup() {
 }
 
 void loop() {
+  // Recieve the command and store it to char `t`
   if (Serial.available()) {
     t = Serial.read();
     if (isdigit(t)) {
