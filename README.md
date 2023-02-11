@@ -4,7 +4,9 @@ Code repository for Robo Kancha Competition organised by Delhi Robotics League
 
 ``
 Team Name: CyphoTech
+
 School Name: DBRA SOSE DWARKA SEC-10
+
 Team Leader: Vedant
 ``
 
