@@ -1,9 +1,6 @@
-# Robo-Kancha
+# WARNING
 
-This branch is a prototype branch for the `main` branch
-
-
-the commits on this branch will be the latest however be warned that most of the code on this branch is just a prototype and may not work/work incorrectly on production
+This branch is an experimental branch.
 
 
-for production, see `main`
+The commits on this branch will be very experimental and are guaranteed to not work on production, see `main` or `prototype` branches.
