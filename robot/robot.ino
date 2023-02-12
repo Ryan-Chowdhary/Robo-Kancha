@@ -92,6 +92,10 @@ class SHOOTER
   protected:
     static const int SHOOTER2 = 6;
     static const int SHOOTER1 = 5;
+    static void set(float angle){
+      S1.write(angle);
+      S2.write(angle);
+    }
   public:
     static Servo S1;
     static Servo S2;
@@ -100,7 +104,13 @@ class SHOOTER
     class LOADER {
       protected:
         static const int servo1 = 3; // first servo pin
-        static const int servo2 = 4; // second servo pin            
+        static const int servo2 = 4; // second servo pin
+        // `set` method is used to control the angle at
+        // which the loader mechanism servos should turn.
+        static void set(float p) {
+          L1.write(p);
+          L2.write(p);
+        }        
       public:
         static Servo L1;
         static Servo L2;
@@ -108,13 +118,8 @@ class SHOOTER
           L1.attach(servo1);
           L2.attach(servo2);
         }
-        // `set` method is used to control the angle at
-        // which the loader mechanism servos should turn.
-        static void set(float p) {
-          L1.write(p);
-          L2.write(p);
-        }
-        // `load` method is used to load the balls by calling `set` with `90` degrees.
+        
+        // `load` method is used to load the balls by calling `set` with `90` degrees as its argument.
         // the delay is set to `1 second`
         static void load() {
           set(90);
@@ -127,7 +132,9 @@ class SHOOTER
       S2.attach(SHOOTER2);
     }
     // `shoot` method is used to make the shooting mechanism shoot the balls
-    void shoot(float f);
+    void shoot(float f){
+      set(90);
+    }
 };
 
 // Initilisation of Servo objects
