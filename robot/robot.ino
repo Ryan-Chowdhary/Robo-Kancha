@@ -2,7 +2,6 @@
 // have yet to be implemented
 // And class `COMM` is yet to be defined
 
-#include <Servo.h>
 #include "Motors.h"
 #include "Shooter.h"
 #include "Debug.h"
@@ -12,7 +11,7 @@ char t;
 
 // `DEBUG::IsDebug` is read before execution of any method in `DEBUG` class.
 // It will only execute if value is set to `true`
-const bool DEBUG::IsDebug = true;
+const bool DEBUG::IsDebug = false;
 
 template <typename T_ty> struct TypeInfo {
   static const char * name;
@@ -49,22 +48,5 @@ void loop() {
 
   // If "t" is not a motion command then restart loop function
   if (isdigit(t)){return;}
-  switch(t)
-  {
-    case 'F':    //move forward(all motors rotate in forward direction)
-      MOTOR::motor_control(HIGH, LOW, HIGH);
-      break;
-    case 'B':    //move reverse (all   motors rotate in reverse direction)
-      MOTOR::motor_control(LOW, HIGH, LOW, HIGH);
-      break;
-    case 'L':    //turn left (right side motors rotate in forward direction, left side motors go backwards)
-      MOTOR::motor_control(LOW, HIGH, HIGH);
-      break;
-    case 'R':    //turn right (left side motors rotate in forward direction, right side motors go backwards)
-      MOTOR::motor_control(HIGH, LOW, LOW, HIGH);
-      break;
-    case 'S':    //STOP (all motors stop)
-      MOTOR::motor_control();
-      break;      
-  }
+  MOTOR::move(t);
 }

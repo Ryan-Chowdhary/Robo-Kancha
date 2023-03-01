@@ -22,6 +22,10 @@ class MOTOR
     /* Used to control the motor output pins.
     If called without arguments, it will set all pins to low */
     static void motor_control(int left_front = LOW, int left_rear = LOW, int right_front = LOW, int right_rear = LOW);
+    
+    // Used to move as specified in passed char.
+    // commands are `F, B, L, R, S` for foreward, backward, left, right, and stop
+    static void move(char direction);
 };
 
 #endif
