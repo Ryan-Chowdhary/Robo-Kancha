@@ -58,10 +58,10 @@ class DEBUG
 class MOTOR
 {
   protected:
-    static const int LEFT_FRONT = 13;
-    static const int LEFT_REAR = 12;
-    static const int RIGHT_FRONT = 11;
-    static const int RIGHT_REAR = 10;
+    static const int LEFT_FRONT = 9;
+    static const int LEFT_REAR = 11;
+    static const int RIGHT_FRONT = 12;
+    static const int RIGHT_REAR = 13;
 
   public:
     MOTOR() {
