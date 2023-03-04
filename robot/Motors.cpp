@@ -42,7 +42,5 @@ void MOTOR::move(char direction){
     case 'S':    //STOP (all motors stop)
       MOTOR::motor_control();
       break;
-    default:
-      do
   }
 }
