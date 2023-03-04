@@ -46,7 +46,6 @@ void loop() {
     DEBUG::print(3, t, ", ", TYPE_NAME(t));
   }
 
-  // If "t" is not a motion command then restart loop function
   if (isdigit(t)){return;}
   MOTOR::move(t);
 }
