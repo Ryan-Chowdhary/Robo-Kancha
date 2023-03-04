@@ -46,6 +46,9 @@ void loop() {
     DEBUG::print(3, t, ", ", TYPE_NAME(t));
   }
 
-  if (isdigit(t)){return;}
-  MOTOR::move(t);
+  switch (t){
+    default:
+      MOTOR::move(t);
+      break;
+  }
 }
