@@ -26,6 +26,7 @@ MAKE_TYPE_INFO( byte )
 class DEBUG;
 class MOTOR;
 class SHOOTER;
+class RECEIVER;
 class COMM;
 
 
@@ -117,12 +118,34 @@ class SHOOTER
     void shoot(float f);
 };
 
+class RECEIVER {
+  public:
+  static const int r = 13;
+  static bool is_open;
+  static Servo R1;
+  RECEIVER(){
+    R1.attach(r);
+  }
+  static void open(){
+    switch (is_open){
+      case true:
+        R1.write(0);
+        break;
+      case false:
+        R1.write(90);
+        break;
+    }
+    is_open = !is_open;
+  }
+};
+
 // Initilisation of Servo objects
-Servo SHOOTER::S1, SHOOTER::S2, SHOOTER::LOADER::L1, SHOOTER::LOADER::L2;
+Servo SHOOTER::S1, SHOOTER::S2, SHOOTER::LOADER::L1, SHOOTER::LOADER::L2, RECEIVER::R1;
 
 void setup() {
   MOTOR motor;
   SHOOTER shooter;
+  RECIVER reciver;
   Serial.begin(9600);
 }
 
