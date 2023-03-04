@@ -80,6 +80,26 @@ class MOTOR
       digitalWrite(RIGHT_FRONT, right_front);
       digitalWrite(RIGHT_REAR, right_rear);
     }
+    void move(char direction){
+      switch(direction)
+      {
+        case 'F':    //move forward(all motors rotate in forward direction)
+          motor_control(HIGH, LOW, HIGH);
+          break;
+        case 'B':    //move reverse (all   motors rotate in reverse direction)
+          motor_control(LOW, HIGH, LOW, HIGH);
+          break;
+        case 'L':    //turn left (right side motors rotate in forward direction, left side motors go backwards)
+          motor_control(LOW, HIGH, HIGH);
+          break;
+        case 'R':    //turn right (left side motors rotate in forward direction, right side motors go backwards)
+          motor_control(HIGH, LOW, LOW, HIGH);
+          break;
+        case 'S':    //STOP (all motors stop)
+          motor_control();
+          break;
+      }
+    }
 };
 
 class SHOOTER
@@ -160,5 +180,8 @@ void loop() {
   }
 
   if (isdigit(t)){return;}
-  MOTOR::move(t);
+  switch (t){
+    default:
+    MOTOR::move(t)
+  }
 }
