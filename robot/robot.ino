@@ -4,6 +4,7 @@
 
 #include "Motors.h"
 #include "Shooter.h"
+#include "Receiver.h"
 #include "Debug.h"
 
 // `t` is the variable the variable that stores the recived commands
@@ -27,12 +28,12 @@ MAKE_TYPE_INFO( short )
 MAKE_TYPE_INFO( String )
 MAKE_TYPE_INFO( char )
 MAKE_TYPE_INFO( byte )
-
-class COMM;
+MAKE_TYPE_INFO( bool )
 
 void setup() {
   MOTOR motor;
   SHOOTER shooter;
+  RECEIVER receiver;
   Serial.begin(9600);
 }
 
