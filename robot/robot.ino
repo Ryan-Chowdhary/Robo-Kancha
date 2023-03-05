@@ -22,12 +22,12 @@ MAKE_TYPE_INFO( short )
 MAKE_TYPE_INFO( String )
 MAKE_TYPE_INFO( char )
 MAKE_TYPE_INFO( byte )
+MAKE_TYPE_INFO( bool )
 
 class DEBUG;
 class MOTOR;
 class SHOOTER;
 class RECEIVER;
-class COMM;
 
 
 // `DEBUG` class is used for debugging purposes.
@@ -80,7 +80,7 @@ class MOTOR
       digitalWrite(RIGHT_FRONT, right_front);
       digitalWrite(RIGHT_REAR, right_rear);
     }
-    void move(char direction){
+    static void move(char direction){
       switch(direction)
       {
         case 'F':    //move forward(all motors rotate in forward direction)
@@ -165,7 +165,7 @@ Servo SHOOTER::S1, SHOOTER::S2, SHOOTER::LOADER::L1, SHOOTER::LOADER::L2, RECEIV
 void setup() {
   MOTOR motor;
   SHOOTER shooter;
-  RECIVER reciver;
+  RECEIVER reciver;
   Serial.begin(9600);
 }
 
@@ -179,9 +179,8 @@ void loop() {
     DEBUG::print(3, t, ", ", TYPE_NAME(t));
   }
 
-  if (isdigit(t)){return;}
   switch (t){
     default:
-    MOTOR::move(t)
+    MOTOR::move(t);
   }
 }
