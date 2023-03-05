@@ -59,7 +59,7 @@ class DEBUG
 class MOTOR
 {
   protected:
-    static const int LEFT_FRONT = 9;
+    static const int LEFT_FRONT = 8;
     static const int LEFT_REAR = 11;
     static const int RIGHT_FRONT = 12;
     static const int RIGHT_REAR = 13;
@@ -105,15 +105,15 @@ class MOTOR
 class SHOOTER
 {
   protected:
-    static const int SHOOTER2 = 6;
-    static const int SHOOTER1 = 5;
+    static const int SHOOTER2 = 10;
+    static const int SHOOTER1 = 6;
   public:
     static Servo S1;
     static Servo S2;
     class LOADER {
       protected:
-        static const int servo1 = 3; // first servo pin
-        static const int servo2 = 4; // second servo pin            
+        static const int servo1 = 5; // first servo pin
+        static const int servo2 = 6; // second servo pin            
       public:
         static Servo L1;
         static Servo L2;
@@ -140,7 +140,7 @@ class SHOOTER
 
 class RECEIVER {
   public:
-  static const int r = 13;
+  static const int r = 9;
   static bool is_open;
   static Servo R1;
   RECEIVER(){
