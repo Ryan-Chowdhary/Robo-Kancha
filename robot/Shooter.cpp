@@ -2,10 +2,10 @@
 // to control the shooter mechanism
 #include "Shooter.h"
 
-const int SHOOTER::SHOOTER1 = 5;
+const int SHOOTER::SHOOTER1 = 10;
 const int SHOOTER::SHOOTER2 = 6;
-const int SHOOTER::LOADER::servo1 = 3;
-const int SHOOTER::LOADER::servo2 = 4;
+const int SHOOTER::LOADER::servo1 = 5;
+const int SHOOTER::LOADER::servo2 = 3;
 
 Servo SHOOTER::S1;
 Servo SHOOTER::S2;

@@ -1,6 +1,6 @@
 #include "Receiver.h"
 
-const int RECEIVER::r = 23;
+const int RECEIVER::r = 9;
 Servo RECEIVER::R1;
 RECEIVER::RECEIVER(){
   R1.attach(r);

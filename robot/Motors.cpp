@@ -5,10 +5,10 @@
 // Advice, because the class members are mostly static, do not create a new instance other than the one inside `setup` but 
 // instead use the class name as the scope specifyer
 
-const int MOTOR::LEFT_FRONT = 13;
-const int MOTOR::LEFT_REAR = 12;
-const int MOTOR::RIGHT_FRONT = 11;
-const int MOTOR::RIGHT_REAR = 10;
+const int MOTOR::LEFT_FRONT = 8;
+const int MOTOR::LEFT_REAR = 11;
+const int MOTOR::RIGHT_FRONT = 12;
+const int MOTOR::RIGHT_REAR = 13;
 
 MOTOR::MOTOR() {
   pinMode(LEFT_FRONT, OUTPUT);
