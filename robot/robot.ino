@@ -105,15 +105,15 @@ class MOTOR
 class SHOOTER
 {
   protected:
-    static const int SHOOTER2 = 10;
-    static const int SHOOTER1 = 6;
+    static const int SHOOTER2 = 6;
+    static const int SHOOTER1 = 10;
   public:
     static Servo S1;
     static Servo S2;
     class LOADER {
       protected:
         static const int servo1 = 5; // first servo pin
-        static const int servo2 = 6; // second servo pin            
+        static const int servo2 = 3; // second servo pin            
       public:
         static Servo L1;
         static Servo L2;
@@ -141,21 +141,19 @@ class SHOOTER
 class RECEIVER {
   public:
   static const int r = 9;
-  static bool is_open;
   static Servo R1;
   RECEIVER(){
     R1.attach(r);
   }
-  static void open(){
-    switch (is_open){
-      case true:
+  static void open(char a){
+    switch (a){
+      case 'x':
         R1.write(0);
         break;
-      case false:
+      case 'X':
         R1.write(90);
         break;
     }
-    is_open = !is_open;
   }
 };
 
@@ -165,6 +163,7 @@ Servo SHOOTER::S1, SHOOTER::S2, SHOOTER::LOADER::L1, SHOOTER::LOADER::L2, RECEIV
 void setup() {
   MOTOR motor;
   SHOOTER shooter;
+  SHOOTER::LOADER loader;
   RECEIVER reciver;
   Serial.begin(9600);
 }
