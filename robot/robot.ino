@@ -1,7 +1,7 @@
 #include <Servo.h>
 
 // `t` is the variable the variable that stores the recived commands
-char t;
+char t = 'n';
 
 // `::DEBUG` is read before execution of any method in `DEBUG` class.
 // It will only execute if value is set to `true`
@@ -60,7 +60,7 @@ class MOTOR
 {
   protected:
     static const int LEFT_FRONT = 8;
-    static const int LEFT_REAR = 11;
+    static const int LEFT_REAR = 4;
     static const int RIGHT_FRONT = 12;
     static const int RIGHT_REAR = 13;
 
@@ -80,6 +80,7 @@ class MOTOR
       digitalWrite(RIGHT_FRONT, right_front);
       digitalWrite(RIGHT_REAR, right_rear);
     }
+    // Just as the name suggests, makes it move
     static void move(char direction){
       switch(direction)
       {
@@ -121,39 +122,46 @@ class SHOOTER
           L1.attach(servo1);
           L2.attach(servo2);
         }
+        // Is used to control the loader servos
         static void set(float p) {
           L1.write(p);
           L2.write(p);
         }
-        static void load() {
-          set(90);
-          delay(1000);
-          set(0);
+        // Loads the balls into the shooter
+        static void load(bool o) {
+          switch (o){
+            case true:
+            set(90);
+            break;
+            case false:
+            set(0);
+            break;
+          }
         }
     };
     SHOOTER(){
       S1.attach(SHOOTER1);
       S2.attach(SHOOTER2);
     }
-    void shoot(float f);
+    // Work in progress.
+    // Need to first look at the shooting mechanism
+    static void shoot(){};
 };
 
 class RECEIVER {
   public:
-  static const int r = 9;
+  static const int r = 11;
   static Servo R1;
   RECEIVER(){
     R1.attach(r);
   }
-  static void open(char a){
-    switch (a){
-      case 'x':
-        R1.write(0);
-        break;
-      case 'X':
-        R1.write(90);
-        break;
-    }
+  // Opens the receiver
+  static void open(){
+    R1.write(0);
+  }
+  // Closes the receiver
+  static void close(){
+    R1.write(90);
   }
 };
 
@@ -164,7 +172,7 @@ void setup() {
   MOTOR motor;
   SHOOTER shooter;
   SHOOTER::LOADER loader;
-  RECEIVER reciver;
+  RECEIVER receiver;
   Serial.begin(9600);
 }
 
@@ -179,6 +187,21 @@ void loop() {
   }
 
   switch (t){
+    case 'x':
+    RECEIVER::open();
+    break;
+    case 'X':
+    RECEIVER::close();
+    break;
+    case 'q':
+    SHOOTER::shoot();
+    break;
+    case 'V':
+    SHOOTER::LOADER::load(true);
+    break;
+    case 'v':
+    SHOOTER::LOADER::load(false);
+    break;
     default:
     MOTOR::move(t);
   }
