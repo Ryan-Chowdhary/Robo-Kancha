@@ -1,6 +1,7 @@
 #include <Servo.h>
 
-// `t` is the variable the variable that stores the recived commands
+// `t` is the variable the variable that stores the recived commands.
+// Its inital value is set to 'n' to avoid any anomalous runtime behaviour.
 char t = 'n';
 
 // `::DEBUG` is read before execution of any method in `DEBUG` class.
@@ -144,8 +145,13 @@ class SHOOTER
       S2.attach(SHOOTER2);
     }
     // Work in progress.
-    // Need to first look at the shooting mechanism
-    static void shoot(){};
+    static void shoot(){
+      S1.write(180);
+      S2.write(180);
+      delay(1000);
+      S1.write(0);
+      S2.write(0);
+    };
 };
 
 class RECEIVER {
@@ -180,9 +186,9 @@ void loop() {
   // Recieve the command and store it to char `t`
   if (Serial.available()) {
     t = Serial.read();
-    if (isdigit(t)) {
+    /*if (isdigit(t)) {
       t = (int) t;
-    }
+    }*/
     DEBUG::print(3, t, ", ", TYPE_NAME(t));
   }
 
