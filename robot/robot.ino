@@ -124,20 +124,11 @@ class SHOOTER
           L2.attach(servo2);
         }
         // Is used to control the loader servos
-        static void set(float p) {
+        static void set1(float p) {
           L1.write(p);
-          L2.write(p);
         }
-        // Loads the balls into the shooter
-        static void load(bool o) {
-          switch (o){
-            case true:
-            set(90);
-            break;
-            case false:
-            set(0);
-            break;
-          }
+        static void set2(float p){
+          L2.write(p);
         }
     };
     SHOOTER(){
@@ -203,10 +194,16 @@ void loop() {
     SHOOTER::shoot();
     break;
     case 'V':
-    SHOOTER::LOADER::load(true);
+    SHOOTER::LOADER::set1(90);
     break;
     case 'v':
-    SHOOTER::LOADER::load(false);
+    SHOOTER::LOADER::set1(0);
+    break;
+    case 'U':
+    SHOOTER::LOADER::set2(90);
+    break;
+    case 'u':
+    SHOOTER::LOADER::set2(0);
     break;
     default:
     MOTOR::move(t);
