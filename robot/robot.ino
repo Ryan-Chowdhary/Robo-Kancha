@@ -33,7 +33,7 @@ class RECEIVER;
 
 // `DEBUG` class is used for debugging purposes.
 // set the `::DEBUG` variable to true to enable the execution of its methods
-class DEBUG
+/* DEBUG
 {
   public:
     // The `DEBUG::print` method is used to print an unknown number of variables.
@@ -51,7 +51,7 @@ class DEBUG
       Serial.println();
       va_end(args);
     }
-};
+};*/
 
 // The `MOTOR` class contains the methods and variables used to control the motors.
 // To begin, initialise a class instance inside the `setup` function, this will set the pins nessassary to control the motors as `OUTPUT`.
@@ -175,14 +175,13 @@ void setup() {
 
 void loop() {
   // Recieve the command and store it to char `t`
-  if (Serial.available()) {
-    t = Serial.read();
+  while (!Serial.available()) {
     /*if (isdigit(t)) {
       t = (int) t;
-    }*/
-    DEBUG::print(3, t, ", ", TYPE_NAME(t));
+    }
+    DEBUG::print(3, t, ", ", TYPE_NAME(t));*/
   }
-
+  t = Serial.read();
   switch (t){
     case 'x':
     RECEIVER::open();
