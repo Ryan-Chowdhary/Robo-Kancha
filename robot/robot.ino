@@ -122,6 +122,8 @@ class SHOOTER
         LOADER(){
           L1.attach(servo1);
           L2.attach(servo2);
+          set1(0);
+          set2(0);
         }
         // Is used to control the loader servos
         static void set1(float p) {
@@ -134,15 +136,16 @@ class SHOOTER
     SHOOTER(){
       S1.attach(SHOOTER1);
       S2.attach(SHOOTER2);
+      end();
     }
-    // Work in progress.
-    static void shoot(){
+    static void start(){
       S1.write(180);
       S2.write(180);
-      delay(1000);
-      S1.write(0);
-      S2.write(0);
-    };
+    }
+    static void end(){
+      S1.write(90);
+      S2.write(90);
+    }
 };
 
 class RECEIVER {
@@ -183,19 +186,16 @@ void loop() {
   }
   t = Serial.read();
   switch (t){
-    case 'x':
+    case 'V':
     RECEIVER::open();
     break;
-    case 'X':
+    case 'v':
     RECEIVER::close();
     break;
-    case 'q':
-    SHOOTER::shoot();
-    break;
-    case 'V':
+    case 'W':
     SHOOTER::LOADER::set1(90);
     break;
-    case 'v':
+    case 'w':
     SHOOTER::LOADER::set1(0);
     break;
     case 'U':
@@ -203,6 +203,12 @@ void loop() {
     break;
     case 'u':
     SHOOTER::LOADER::set2(0);
+    break;
+    case 'X':
+    SHOOTER::start();
+    break;
+    case 'x':
+    SHOOTER::end();
     break;
     default:
     MOTOR::move(t);
